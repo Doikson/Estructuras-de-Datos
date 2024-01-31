@@ -2,16 +2,13 @@
 #include <cmath>
 using namespace std;
 
-// Variables
+//Variables
 double salario,limite_inferior,tasa,cuota_fija,resultado;
 int posicion; //Guarda una posicion del Array
 
-// Funciones
-void IngresaSalario();
-
 int main() {
 
-    // Declaracion del Array Tabla ISR 2019
+    //Declaracion del Array Tabla ISR 2019
     double ISR[11][3] = {
 
         {0.01,     0.00,   1.92},
@@ -26,7 +23,8 @@ int main() {
         {97183.34, 25350.35,34.00},
         {291550.01,91435.02,35.00}};
 
-    IngresaSalario();
+    //Obtencion Salario
+    cout << "Ingresa tu Salario: $"; cin >> salario;
 
      //Obtencion del Limite Inferior Correspondiente
     for (int i = 0; i < 11; i++) {
@@ -53,10 +51,3 @@ int main() {
 
     return 0;
 }
-
-// Definicion Salario
-void IngresaSalario() {
-    cout << "Ingresa tu Salario: $"; cin >> salario;
-}
-
-
