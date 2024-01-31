@@ -35,6 +35,10 @@ int main() {
     } 
     cout << "El limite inferior es: $"<< limite_inferior << endl;
 
+
+        // AGREGAR IF PARA AJUSTAR LA POSICION EN EL ARRAY (PARA PODER ASIGNAR SALARIOS MAYORES)
+
+
     //Obtencion de la Tasa Correspondiente
     tasa = (ISR[(posicion)][2]);
     cout << "La tasa es: %"<< tasa << endl;
