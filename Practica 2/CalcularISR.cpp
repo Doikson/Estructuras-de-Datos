@@ -1,3 +1,4 @@
+//Practica 2 Calcular ISR - Jose Angel Cortes Baillet
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -33,25 +34,20 @@ int main() {
             posicion = i+1 ;
         }
     } 
-    cout << "El limite inferior es: $"<< limite_inferior << endl;
 
-
-        // AGREGAR IF PARA AJUSTAR LA POSICION EN EL ARRAY (PARA PODER ASIGNAR SALARIOS MAYORES)
-
-
-    //Obtencion de la Tasa Correspondiente
-    tasa = (ISR[(posicion)][2]);
-    cout << "La tasa es: %"<< tasa << endl;
+    //Se ajusta la posicion para que exista dentro de los limites del Array
+    if (posicion == 11){
+        posicion = 10;
+    }
     
-
-    //Obtencion de Cuota Correspondiente
-    cuota_fija = ISR[(posicion)][1];
-    cout << "La Cuota Fija es: $"<< cuota_fija << endl;
+    tasa = (ISR[posicion][2]);
+    cuota_fija = ISR[posicion][1];
+    cout << "El limite inferior es: $"<< limite_inferior << endl;
+    cout << "La tasa es: %"<< tasa << endl;
+    cout << "La Cuota Fija es: $"<< cuota_fija << endl;  
 
     //Calculo del ISR
     resultado = (salario-limite_inferior)-(((salario-limite_inferior)*tasa)/100) + cuota_fija;
     cout << "El IRS estimado es: $"<< resultado << endl;
-
-
     return 0;
 }
