@@ -1,6 +1,5 @@
 //Practica 2 Calcular ISR - Jose Angel Cortes Baillet
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 //Variables
