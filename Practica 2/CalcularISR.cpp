@@ -8,7 +8,6 @@ int posicion; //Guarda una posicion del Array
 
 int main() {
 
-    //Declaracion del Array Tabla ISR 2019
     double ISR[11][3] = {
 
         {0.01,     0.00,   1.92},
@@ -23,10 +22,9 @@ int main() {
         {97183.34, 25350.35,34.00},
         {291550.01,91435.02,35.00}};
 
-    //Obtencion Salario
     cout << "Ingresa tu Salario: $"; cin >> salario;
 
-     //Obtencion del Limite Inferior Correspondiente
+    //Obtencion del Limite Inferior Correspondiente
     for (int i = 0; i < 11; i++) {
         if (salario >= ISR[i][0]) {
             limite_inferior = ISR[i][0];
@@ -45,7 +43,6 @@ int main() {
     cout << "La tasa es: %"<< tasa << endl;
     cout << "La Cuota Fija es: $"<< cuota_fija << endl;  
 
-    //Calculo del ISR
     resultado = (salario-limite_inferior)-(((salario-limite_inferior)*tasa)/100) + cuota_fija;
     cout << "El IRS estimado es: $"<< resultado << endl;
     return 0;
