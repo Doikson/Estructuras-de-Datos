@@ -16,7 +16,7 @@ int posicion; // Guarda una posición del Array
 void iniciarTabla(TablaISR* ISR);
 
 int main() {
-    
+
     //Se inicia la tabla y se llena
     TablaISR ISR[11];
     iniciarTabla(ISR);
@@ -49,7 +49,6 @@ int main() {
 
     return 0;
 }
-
 
 void iniciarTabla(TablaISR* ISR) {
     ISR[0] = {0.01, 0.00, 1.92};
