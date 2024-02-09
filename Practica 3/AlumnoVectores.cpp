@@ -56,6 +56,7 @@ void Alumno::altaAlumno(Alumno &alumno) {
 
 // Definición de imprimeDatos
 void Alumno::imprimeDatos(const Alumno &alumno) {
+    cout << "========================================================" << endl;
     cout << "Nombre : " << alumno.nombre << endl;
     cout << "Apellido Paterno : " << alumno.ap << endl;
     cout << "Apellito Materno : " << alumno.am << endl;
@@ -64,6 +65,7 @@ void Alumno::imprimeDatos(const Alumno &alumno) {
     for (const auto &materia : alumno.v2) {
         cout << "  - " << materia.materia << ": " << materia.calificacion << endl;
     }
+    cout << "========================================================" << endl;
 }
 
 // Declaración de las funciones
