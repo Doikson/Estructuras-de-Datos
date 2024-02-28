@@ -2,9 +2,7 @@
 #include <vector>
 using namespace std;
 
-//Variables Globales    
-vector <Materiales> materiales;
-vector <Usuario> usuarios;
+//Variables Globales
 int num_users;
 int cuenta;
 int totalMateriales=0;
@@ -29,7 +27,7 @@ private:
     vector <string> actor;
     vector <string> director;
     int inventario; //Cantidad en stock
-    bool referencia; //Solo puede ser prestado por 2hrs si es true
+    char referencia; //Solo puede ser prestado por 2hrs si es true
 
 public:
     void ingresarDatosMaterial() {
@@ -47,7 +45,7 @@ public:
         cin >> region;
         cout << "Ingrese el inventario del material: " << endl;
         cin >> inventario;
-        cout << "¿Es una referencia? (Si = 1 / No = 0): " << endl;
+        cout << "¿Es una referencia? (S/N): " << endl;
         cin >> referencia;
 
           // Ingreso del número de actores
@@ -172,6 +170,10 @@ private:
 
 
 int main (){
+    
+    vector <Materiales> materiales;
+    vector <Usuario> usuarios;
+
 
     int opcion;
     do {
