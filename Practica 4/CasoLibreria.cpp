@@ -292,6 +292,48 @@ int main() {
             break;
         }
 
+        case 2:
+{
+    if (materiales.empty()) {
+        cout << "No hay materiales para prestar." << endl;
+    } else {
+        string idMaterial;
+        cout << "Ingrese el ID del material a prestar: ";
+        cin >> idMaterial;
+
+        bool encontrado = false;
+        for (size_t i = 0; i < materiales.size(); ++i) {
+            if (materiales[i].getId() == idMaterial) {
+                encontrado = true;
+                if (materiales[i].prestarMaterial()) {
+                    Usuario nuevoUsuario;
+                    nuevoUsuario.ingresarDatosUsuario();
+                    nuevoUsuario.setIdMaterial(idMaterial);
+                    nuevoUsuario.incrementarPrestamos(); // Incrementar el contador de préstamos
+                    usuarios.push_back(nuevoUsuario);
+                    totalUsuarios++;
+                    
+                    // Verificar si el usuario ha alcanzado un múltiplo de 3 en el número total de préstamos realizados
+                    if (nuevoUsuario.getPrestamosRealizados() % 3 == 0) {
+                        cout << "¡Felicidades! Has realizado 3 préstamos y has ganado una recompensa en la cafetería." << endl;
+                        // Aquí puedes agregar el código para otorgar la recompensa de comida en la cafetería
+                    }
+                    
+                    cout << "Material prestado correctamente." << endl;
+                } else {
+                    cout << "No hay inventario disponible para prestar este material." << endl;
+                }
+                break;
+            }
+        }
+        if (!encontrado) {
+            cout << "No se encontró un material con ese ID." << endl;
+        }
+    }
+    break;
+}
+
+
         case 3: 
         {
             if (usuarios.empty()) {
