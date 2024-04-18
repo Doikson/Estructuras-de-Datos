@@ -1,15 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 // Función para ordenar la lista utilizando el algoritmo de selección (Selection Sort)
-void seleccionSort(vector<int> &lista) {
-    cout << "Lista original:" << endl;
-    for (int num : lista) { // Itera sobre la lista original e imprime cada elemento
-        cout << num << " ";
-    }
-    cout << endl;
+void seleccionSort(vector<int>& lista) {
+    auto start = high_resolution_clock::now(); // Marca el inicio del proceso de ordenamiento
 
     int minIndex = 0; // Variable para almacenar el índice del elemento más pequeño
     for (int i = 0; i < lista.size(); i++) { // Itera sobre la lista
@@ -23,25 +21,32 @@ void seleccionSort(vector<int> &lista) {
         int temp = lista[minIndex];
         lista[minIndex] = lista[i];
         lista[i] = temp;
-
-        cout << "Índice mínimo: " << minIndex << endl; // Imprime el índice mínimo en cada iteración
-        cout << "Parcial: ";
-        for (int num : lista) { // Imprime la lista parcial después de cada iteración
-            cout << num << " ";
-        }
-        cout << endl;
     }
 
-    cout << "Lista ordenada:" << endl;
-    for (int num : lista) { // Imprime la lista ordenada al final
-        cout << num << " ";
-    }
-    cout << endl;
+    auto stop = high_resolution_clock::now(); // Marca el final del proceso de ordenamiento
+    auto duration = duration_cast<microseconds>(stop - start); // Calcula la duración en microsegundos
+    cout << "Tiempo de ejecución para " << lista.size() << " elementos: " << duration.count() / 1000.0 << " milisegundos" << endl; // Imprime el tiempo en milisegundos
 }
 
 int main() {
-    vector<int> lista = {56, 1, 99, 67, 89, 23, 44, 12, 78, 34}; // Lista de números enteros
-    seleccionSort(lista); // Llama a la función para ordenar la lista utilizando Selection Sort
+    vector<int> lista1000;
+    for (int i = 0; i < 1000; i++) {
+        lista1000.push_back(i); // Rellenamos la lista con números en orden ascendente
+    }
+
+    vector<int> lista10000;
+    for (int i = 0; i < 10000; i++) {
+        lista10000.push_back(i); // Rellenamos la lista con números en orden ascendente
+    }
+
+    vector<int> lista100000;
+    for (int i = 0; i < 100000; i++) {
+        lista100000.push_back(i); // Rellenamos la lista con números en orden ascendente
+    }
+
+    seleccionSort(lista1000); // Llama a la función para ordenar la lista de 1000 elementos
+    seleccionSort(lista10000); // Llama a la función para ordenar la lista de 10000 elementos
+    seleccionSort(lista100000); // Llama a la función para ordenar la lista de 100000 elementos
 
     return 0; // Retorna 0 para indicar que el programa se ejecutó correctamente
 }

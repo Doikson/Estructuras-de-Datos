@@ -56,7 +56,7 @@ vector<int> concatena(vector<int>& V1, vector<int>& V2) {
 
 int main() {
 
-    vector<int> V1 = {1, 2, 3};
+    vector<int> V1 = {1, 2, 3,};
     vector<int> V2 = {4, 5, 6};
     
     cout << "V1 = {";

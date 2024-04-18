@@ -6,58 +6,51 @@
 using namespace std;
 using namespace std::chrono;
 
-vector<double> v1;
-vector<double> v2 {32, 355, 66, 7, 8, 89, 2, 1, 5, 88, 99, 6};
-
-void imprimeVector(vector<double> v);
-void burbuja(vector<double> &v, bool imp = false);
-void seleccion(vector<double> &v);
+void burbuja(vector<double>& v);
+void seleccion(vector<double>& v);
 
 int main() {
-    auto start = high_resolution_clock::now();
-
-    double num = 0;
+    // Vector con 1000 elementos
+    vector<double> v1000;
     random_device rd;
     default_random_engine gen(rd());
     uniform_real_distribution<double> distribution(1.5, 1.90);
 
-    for (int i = 0; i < 10000; i++) {
-        num = distribution(gen);
-        v1.push_back(num);
+    for (int i = 0; i < 1000; i++) {
+        double num = distribution(gen);
+        v1000.push_back(num);
     }
 
-    cout << "Lista generada aleatoriamente:" << endl;
-    imprimeVector(v1);
+    auto start1000 = high_resolution_clock::now();
+    burbuja(v1000);
+    auto stop1000 = high_resolution_clock::now();
+    auto duration1000 = duration_cast<microseconds>(stop1000 - start1000);
 
-    burbuja(v1, true);
-    cout << "Lista ordenada con burbuja:" << endl;
-    imprimeVector(v1);
+    // Vector con 10000 elementos
+    vector<double> v10000;
+    for (int i = 0; i < 10000; i++) {
+        double num = distribution(gen);
+        v10000.push_back(num);
+    }
 
-    seleccion(v2);
-    cout << "Lista ordenada con selección:" << endl;
-    imprimeVector(v2);
+    auto start10000 = high_resolution_clock::now();
+    burbuja(v10000);
+    auto stop10000 = high_resolution_clock::now();
+    auto duration10000 = duration_cast<microseconds>(stop10000 - start10000);
 
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << "Tiempo de ejecución: " << duration.count() / 1000 << " milisegundos" << endl;
+    cout << "Tiempo de ejecución para 1000 elementos: " << duration1000.count() << " microsegundos" << endl;
+    cout << "Tiempo de ejecución para 10000 elementos: " << duration10000.count() << " microsegundos" << endl;
 
     return 0;
 }
 
-void imprimeVector(vector<double> v) {
-    for (size_t i = 0; i < v.size(); i++) { // Usamos size_t para evitar comparaciones de tipos diferentes
-        cout << v[i] << ",";
-    }
-    cout << endl;
-}
-
-void burbuja(vector<double> &v, bool imp) {
+void burbuja(vector<double>& v) {
     double temp = 0;
     bool swapp = true;
 
     while (swapp) {
         swapp = false;
-        for (size_t i = 0; i < v.size() - 1; i++) { // Usamos size_t para evitar comparaciones de tipos diferentes
+        for (int i = 0; i < v.size() - 1; i++) {
             if (v[i] > v[i + 1]) {
                 temp = v[i + 1];
                 v[i + 1] = v[i];
@@ -66,18 +59,13 @@ void burbuja(vector<double> &v, bool imp) {
             }
         }
     }
-
-    if (imp) {
-        cout << "Lista ordenada con burbuja:" << endl;
-        imprimeVector(v);
-    }
 }
 
-void seleccion(vector<double> &v) {
-    size_t minIndex = 0; // Usamos size_t para evitar comparaciones de tipos diferentes
-    for (size_t i = 0; i < v.size(); i++) { // Usamos size_t para evitar comparaciones de tipos diferentes
+void seleccion(vector<double>& v) {
+    int minIndex = 0;
+    for (int i = 0; i < v.size(); i++) {
         minIndex = i;
-        for (size_t j = i + 1; j < v.size(); j++) { // Usamos size_t para evitar comparaciones de tipos diferentes
+        for (int j = i + 1; j < v.size(); j++) {
             if (v[j] < v[minIndex]) {
                 minIndex = j;
             }
