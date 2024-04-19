@@ -1,3 +1,5 @@
+//Presentar propuesta iterativa, poner el codigo como texto e imprimirlo todo
+
 #include <iostream>
 using namespace std;
 
